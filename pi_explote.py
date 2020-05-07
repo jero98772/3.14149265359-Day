@@ -22,5 +22,3 @@ err = (  A/2/r - B/2/r  )/2
 
 print (err)
 print (pi)
-
-
