@@ -2,6 +2,9 @@ import sys
 IMGNAME = "img.jpg"
 IMG2TXT = "PI.html"
 DIGITS = "digitsPI.txt"
+#IMG2TXTE = "other_days/e/out.html"
+#DIGITSE = "other_days/e/digitsE.txt"
+#e url https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fd138zd1ktt9iqe.cloudfront.net%2Fmedia%2Fseo_landing_files%2Fhimadri-euler-s-number-01-1602838144.png&f=1&nofb=1
 def writetxt(name,msg):
 	with open(name, "w") as file:
 		file.write(msg)
