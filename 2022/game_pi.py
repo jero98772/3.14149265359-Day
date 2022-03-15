@@ -1,5 +1,7 @@
 import sys
 import time
+import subprocess
+
 IMGNAME = "img.jpg"
 IMG2TXT = "PI.html"
 DIGITS = "digitsPI.txt"
@@ -40,8 +42,9 @@ def printscoreTable(scoreTable):
 	for i in range(len(scoreTable)):
 		txt+="Name:\t"+str(scoreTable[i][0])+"  playstatus:"+str(scoreTable[i][5])
 		txt+="\n"+("-"*50)+"\n"
-		txt+="\nLevel:\t"+str(scoreTable[i][1])+"\nScore:\t"+str(round(scoreTable[i][2],5))
+		txt+="\nLevel:\t"+str(scoreTable[i][1])+"\nScore:\t"+str(round(scoreTable[i][2],5))+"\nPi digits:\t"+str(scoreTable[i][4])
 		txt+="\n"+("-"*50)+"\n\n"
+
 	print(txt)
 
 def betterPlayer(score):
@@ -145,12 +148,14 @@ who know more digits of pi
 			i+=1
 	if gamemode=="c" or gamemode=="pi competition" or gamemode=="picompetition" or gamemode=="competition":
 		for i in range(len(scoreTable)):
+			subprocess.run("clear",shell=True)
 			nums,timer=timecount(str(scoreTable[i%players][0]),"please enter your pi digits")
 			if nums==digitspi[:len(nums)]:
 				scoreTable[i%players][2]=((len(nums)/(timer))*10*players)
 			else:
 				print("wrong answer, answer must be"+str(digitspi[:len(nums)]))
 				scoreTable[i%players][2]=0
+			scoreTable[i%players][4]=nums
 		try:
 			img=img2asciiart(IMGNAME,size=int(bestScore),items=[iter(digitspi)," "])
 		except:
