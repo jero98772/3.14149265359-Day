@@ -54,5 +54,10 @@ and answer to input with number of sides
 
 with this return aproximation of pi number 
 
+### pi game 2022
+
+[video](https://youtu.be/GYHR1hNCBYo) of pi game 2022
+
+
 # happy pi day
 

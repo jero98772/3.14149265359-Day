@@ -54,7 +54,7 @@ def betterPlayer(score):
 		if betterScore<score[i][2]:
 			betterScore=score[i][2]
 			name=score[i][0]
-	return name,str(round(betterScore,10))
+	return name,round(betterScore,10)
 
 def timecount(turn,msg):
 	print("next player is:\n\t"+turn)
@@ -124,7 +124,7 @@ who know more digits of pi
 					except:
 						img=""
 					print("congratularions "+name+" you socore was "+str(bestScore)+"\n\n"+img)
-					print("your pi is"+str(picolective))
+					print("your pi is:\t"+str(picolective))
 					printscoreTable(scoreTable)
 					break
 				diedPlayerscounter+=1
@@ -134,7 +134,7 @@ who know more digits of pi
 			if num==digitspi[level]:
 				score+=(i+0.1*level)/(timer)
 				scoreTable[i%players][1]=level
-				scoreTable[i%players][2]=((i+0.1*level)/(timer))+int(score/10)
+				scoreTable[i%players][2]=((i+0.1*level**2)/(timer))+int(score/10)
 				picolective+=digitspi[level]
 				level+=1
 			else:
@@ -153,19 +153,25 @@ who know more digits of pi
 			if nums==digitspi[:len(nums)]:
 				scoreTable[i%players][2]=((len(nums)/(timer))*10*players)
 			else:
-				print("wrong answer, answer must be"+str(digitspi[:len(nums)]))
+				print("wrong answer, answer must be "+str(digitspi[:len(nums)]))
 				scoreTable[i%players][2]=0
 			scoreTable[i%players][4]=nums
-		try:
-			img=img2asciiart(IMGNAME,size=int(bestScore),items=[iter(digitspi)," "])
-		except:
-			img=""
 		name,bestScore=betterPlayer(scoreTable)
-		print("congratularions "+name+" you socore was "+str(bestScore)+"\n\n"+img)
+		print(name,bestScore)
+		#try:
+		#img=img2asciiart(IMGNAME,size=int(bestScore),items=[iter(digitspi)," "])
+		if bestScore<=0:
+			img=""
+		else:
+			img=img2asciiart(IMGNAME,size=int(bestScore),items=[iter(digitspi)," "])
+		#except:
+		#	img=""
+		print("congratularions "+name+" you socore was  "+str(bestScore)+"\n\n"+img)
 		printscoreTable(scoreTable)
 
 
 def main():
+	subprocess.run("clear",shell=True)
 	digitspi = readtxt(DIGITS)
 	game(digitspi)
 	
